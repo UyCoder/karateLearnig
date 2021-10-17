@@ -7,6 +7,8 @@ Feature: Get method learning
     * header Accept = 'application/json'
 
 
+
+
   Scenario: Get Demo 1 -- simple get request
     Given url 'https://reqres.in/api/users?page=2'
     When method GET
@@ -16,6 +18,7 @@ Feature: Get method learning
     And print responseTime
     And print responseHeaders
     And print responseCookies
+
 
     Scenario: Get Demo 2 -- get with background
       Given path '/users?page=2'
@@ -30,6 +33,7 @@ Feature: Get method learning
     When method GET
     Then status 200
     And print response
+
 
   Scenario: Get Demo 4 -- with assertions
     Given path '/users'
