@@ -44,10 +44,10 @@ Feature: Post api request
   Scenario: Post demo 5 -- read request body data from the specific file
     Given path '/users'
     And param page = 2
-    And def requestBody = read(userdata.json)
+    And def requestBody = read('userData.json')
     When method POST
     Then status 201
-    And match $ == requestBody
+    And match $ == expectedOutput
     And print response
 
 

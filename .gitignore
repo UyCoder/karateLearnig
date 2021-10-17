@@ -1,2 +1,2 @@
 # Project exclude paths
-/target/!/src/test/java/tests/userdata.json
+!/src/test/java/tests/userData.json
