@@ -6,6 +6,8 @@ Feature: Post api request
     * url 'https://reqres.in/api'
     * header Accept = 'application/json'
     * def expectedOutput = read('responseForPostFeatureFile.json')
+    * def expectedOutputWithoutName = read('responseForPostFeatureFileWithoutName.json')
+
 
   Scenario: Post demo 1 -- simple post
     Given url 'https://reqres.in/api/users?page=2'
@@ -44,11 +46,17 @@ Feature: Post api request
   Scenario: Post demo 5 -- read request body data from the specific file
     Given path '/users'
     And param page = 2
-    And def requestBody = read('userData.json')
+    And def requestBody = read('user.json')
     When method POST
     Then status 201
-    And match $ == expectedOutput
+    And match $ == expectedOutputWithoutName
     And print response
 
-
-
+  Scenario: Post demo 6 -- read request body data from the specific file and change request values
+    Given path '/users'
+    And def reqBody = read('user.json')
+    And set reqBody.job = 'engineer'
+    And request reqBody
+    When method POST
+    Then status 201
+    And print response
